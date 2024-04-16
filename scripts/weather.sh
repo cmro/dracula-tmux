@@ -13,7 +13,7 @@ display_location()
   elif $location; then
     city=$(curl -s https://ipinfo.io/city 2> /dev/null)
     region=$(curl -s https://ipinfo.io/region 2> /dev/null)
-    echo " $city, $region"
+    echo " $city"
   else
     echo ''
   fi
