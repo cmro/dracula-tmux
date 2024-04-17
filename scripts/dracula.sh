@@ -8,6 +8,8 @@ source $current_dir/utils.sh
 main()
 {
   # set configuration option variables
+  lastfm_api_key=$(get_tmux_option "@dracula-lastfm-api-key" "")
+  lastfm_user=$(get_tmux_option "@dracula-lastfm-username" "")
   show_kubernetes_context_label=$(get_tmux_option "@dracula-kubernetes-context-label" "")
   eks_hide_arn=$(get_tmux_option "@dracula-kubernetes-eks-hide-arn" false)
   eks_extract_account=$(get_tmux_option "@dracula-kubernetes-eks-extract-account" false)
@@ -186,6 +188,10 @@ main()
     elif [ $plugin = "cpu-usage" ]; then
       IFS=' ' read -r -a colors <<< $(get_tmux_option "@dracula-cpu-usage-colors" "orange dark_gray")
       script="#($current_dir/cpu_info.sh)"
+
+    elif [ $plugin = "lastfm" ]; then
+      IFS=' ' read -r -a colors <<< $(get_tmux_option "@dracula-lastafm-colors" "red dark_gray")
+      script="#($current_dir/lastfm.sh)"
 
     elif [ $plugin = "ram-usage" ]; then
       IFS=' ' read -r -a colors <<< $(get_tmux_option "@dracula-ram-usage-colors" "cyan dark_gray")
