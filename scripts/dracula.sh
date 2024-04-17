@@ -190,8 +190,8 @@ main()
       script="#($current_dir/cpu_info.sh)"
 
     elif [ $plugin = "lastfm" ]; then
-      IFS=' ' read -r -a colors <<< $(get_tmux_option "@dracula-lastafm-colors" "red dark_gray")
-      script="#($current_dir/lastfm.sh)"
+      IFS=' ' read -r -a colors <<< $(get_tmux_option "@dracula-lastfm-colors" "red dark_gray")
+      script="#($current_dir/lastfm.sh $lastfm_user $lastfm_api_key)"
 
     elif [ $plugin = "ram-usage" ]; then
       IFS=' ' read -r -a colors <<< $(get_tmux_option "@dracula-ram-usage-colors" "cyan dark_gray")
